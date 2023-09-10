@@ -17,19 +17,23 @@ server.post("/videos", (request, reply) => {
   return reply.status(201).send();
 });
 
-server.get("/videos", () => {
-  const videos = database.list();
+server.get("/videos", (request) => {
+  const search = request.query.search;
+
+  console.log(search);
+
+  const videos = database.list(search);
   console.log(videos);
 
   return videos;
 });
 
-server.put("/video/:id", (request,reply) => {
+server.put("/video/:id", (request, reply) => {
   const videoId = request.params.id;
 
   const { title, description, duration } = request.body;
 
-  database.update(videoId,{
+  database.update(videoId, {
     title,
     description,
     duration,
@@ -38,13 +42,12 @@ server.put("/video/:id", (request,reply) => {
   return reply.status(204).send();
 });
 
-server.delete("/video/:id", (request,reply) => {
-    const videoId = request.params.id
+server.delete("/video/:id", (request, reply) => {
+  const videoId = request.params.id;
 
-    database.delete(videoId)
+  database.delete(videoId);
 
-    return reply.status(204).send();
-
+  return reply.status(204).send();
 });
 
 server.listen({ port: 3333 });

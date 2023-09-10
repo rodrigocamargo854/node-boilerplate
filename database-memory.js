@@ -3,14 +3,21 @@ import { randomUUID } from "node:crypto";
 export class DatabaseMemory {
   #videos = new Map();
 
-  list() {
-    return Array.from(this.#videos.entries()).map((videoArray) => {
-      const [id, data] = [videoArray[0], videoArray[1]];
-      return {
-        id,
-        ...data,
-      };
-    });
+  list(search) {
+    return Array.from(this.#videos.entries())
+      .map((videoArray) => {
+        const [id, data] = [videoArray[0], videoArray[1]];
+        return {
+          id,
+          ...data,
+        };
+      }).filter(video => {
+        if (search) {
+          return video.title.includes(search);
+        }
+        
+        return true;
+      });
   }
 
   create(video) {
@@ -27,4 +34,3 @@ export class DatabaseMemory {
     this.#videos.delete(id);
   }
 }
-
