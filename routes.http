@@ -1,4 +1,4 @@
-POST http://localhost:3333/videos
+POST https://node-boilerplate-o8oh.onrender.com/videos
 Content-type: application/json
 
 {
@@ -9,11 +9,11 @@ Content-type: application/json
 
 ###
 
-GET http://localhost:3333/videos
+GET https://node-boilerplate-o8oh.onrender.com/videos
 
 
 ###
-PUT http://localhost:3333/video/aeaba082-4a41-4c08-b74f-b3922b74e1be
+PUT https://node-boilerplate-o8oh.onrender.com/video/aeaba082-4a41-4c08-b74f-b3922b74e1be
 Content-type: application/json
 
 {
@@ -23,4 +23,4 @@ Content-type: application/json
 }
 
 ###
-DELETE http://localhost:3333/video/
+DELETE https://node-boilerplate-o8oh.onrender.com/video/
